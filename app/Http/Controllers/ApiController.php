@@ -18,10 +18,14 @@ class ApiController extends Controller
         //
     }
 
+    //Mock endpoint - for demo purpouses
     public function getOffer($code)
     {
-        //TODO: explanation needed
-        return response()->json(['code' => $code], 200);
+        if ($code == '1234') {
+            return response(file_get_contents(storage_path('mock_response.json')));
+        }
+
+        return response()->json(['error' => 'Invalid code']);
     }
 
     public function storeProducts(Request $request)

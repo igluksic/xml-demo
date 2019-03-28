@@ -21,9 +21,18 @@ $router->post('/api/products', [
     'uses' => 'ApiController@storeProducts'
     ]);
 
+//Mock endpoint
 $router->get('/api/offer/{code}', [
     'middleware' => 'basic.auth',
     'as' => 'get.offer',
     'uses' => 'ApiController@getOffer'
+]);
+
+$router->get('/', [
+    'as' => 'home', 'uses' => 'HomeController@index'
+]);
+
+$router->post('get-offers-data', [
+    'as' => 'get.offers.data', 'uses' => 'HomeController@getApiData'
 ]);
 
